@@ -34,6 +34,15 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FruitReq" /> class.
         /// </summary>
+        /// <param name="_null"></param>
+        public FruitReq(Null _null)
+        {
+            Null = _null;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FruitReq" /> class.
+        /// </summary>
         /// <param name="appleReq"></param>
         public FruitReq(AppleReq appleReq)
         {
@@ -48,6 +57,11 @@ namespace Org.OpenAPITools.Model
         {
             BananaReq = bananaReq;
         }
+
+        /// <summary>
+        /// Gets or Sets Null
+        /// </summary>
+        public Null Null { get; set; }
 
         /// <summary>
         /// Gets or Sets AppleReq
@@ -142,6 +156,9 @@ namespace Org.OpenAPITools.Model
             if (reader.TokenType != JsonTokenType.StartObject)
                 throw new JsonException();
 
+            Utf8JsonReader _nullReader = reader;
+            bool _nullDeserialized = Client.ClientUtils.TryDeserialize<Null>(ref _nullReader, options, out Null? _null);
+
             Utf8JsonReader appleReqReader = reader;
             bool appleReqDeserialized = Client.ClientUtils.TryDeserialize<AppleReq>(ref appleReqReader, options, out AppleReq? appleReq);
 
@@ -164,6 +181,9 @@ namespace Org.OpenAPITools.Model
                     }
                 }
             }
+
+            if (_nullDeserialized)
+                return new FruitReq(_null);
 
             if (appleReqDeserialized)
                 return new FruitReq(appleReq);

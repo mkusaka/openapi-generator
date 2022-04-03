@@ -32,15 +32,22 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Cat" /> class.
         /// </summary>
+        /// <param name="animal"></param>
         /// <param name="dictionary"></param>
         /// <param name="catAllOf"></param>
         /// <param name="className">className (required)</param>
         /// <param name="color">color (default to &quot;red&quot;)</param>
-        public Cat(Dictionary<string, int> dictionary, CatAllOf catAllOf, string className, string color = "red") : base(className, color)
+        public Cat(Animal animal, Dictionary<string, int> dictionary, CatAllOf catAllOf, string className, string color = "red") : base(className, color)
         {
+            Animal = animal;
             Dictionary = dictionary;
             CatAllOf = catAllOf;
         }
+
+        /// <summary>
+        /// Gets or Sets Animal
+        /// </summary>
+        public Animal Animal { get; set; }
 
         /// <summary>
         /// Gets or Sets Dictionary
@@ -127,6 +134,9 @@ namespace Org.OpenAPITools.Model
             if (reader.TokenType != JsonTokenType.StartObject)
                 throw new JsonException();
 
+            Utf8JsonReader animalReader = reader;
+            bool animalDeserialized = Client.ClientUtils.TryDeserialize<Animal>(ref animalReader, options, out Animal animal);
+
             Utf8JsonReader dictionaryReader = reader;
             bool dictionaryDeserialized = Client.ClientUtils.TryDeserialize<Dictionary<string, int>>(ref dictionaryReader, options, out Dictionary<string, int> dictionary);
 
@@ -158,7 +168,7 @@ namespace Org.OpenAPITools.Model
                 }
             }
 
-            return new Cat(dictionary, catAllOf, className, color);
+            return new Cat(animal, dictionary, catAllOf, className, color);
         }
 
         /// <summary>

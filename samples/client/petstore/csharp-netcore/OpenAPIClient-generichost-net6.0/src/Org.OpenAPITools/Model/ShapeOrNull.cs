@@ -32,6 +32,20 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ShapeOrNull" /> class.
         /// </summary>
+        /// <param name="_null"></param>
+        /// <param name="quadrilateralType">quadrilateralType (required)</param>
+        public ShapeOrNull(Null _null, string quadrilateralType)
+        {
+            if (quadrilateralType == null)
+                throw new ArgumentNullException("quadrilateralType is a required property for ShapeOrNull and cannot be null.");
+
+            Null = _null;
+            QuadrilateralType = quadrilateralType;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ShapeOrNull" /> class.
+        /// </summary>
         /// <param name="triangle"></param>
         /// <param name="quadrilateralType">quadrilateralType (required)</param>
         public ShapeOrNull(Triangle triangle, string quadrilateralType)
@@ -56,6 +70,11 @@ namespace Org.OpenAPITools.Model
             Quadrilateral = quadrilateral;
             QuadrilateralType = quadrilateralType;
         }
+
+        /// <summary>
+        /// Gets or Sets Null
+        /// </summary>
+        public Null Null { get; set; }
 
         /// <summary>
         /// Gets or Sets Triangle
@@ -182,6 +201,9 @@ namespace Org.OpenAPITools.Model
             if (reader.TokenType != JsonTokenType.StartObject)
                 throw new JsonException();
 
+            Utf8JsonReader _nullReader = reader;
+            bool _nullDeserialized = Client.ClientUtils.TryDeserialize<Null>(ref _nullReader, options, out Null _null);
+
             Utf8JsonReader triangleReader = reader;
             bool triangleDeserialized = Client.ClientUtils.TryDeserialize<Triangle>(ref triangleReader, options, out Triangle triangle);
 
@@ -208,6 +230,9 @@ namespace Org.OpenAPITools.Model
                     }
                 }
             }
+
+            if (_nullDeserialized)
+                return new ShapeOrNull(_null, quadrilateralType);
 
             if (triangleDeserialized)
                 return new ShapeOrNull(triangle, quadrilateralType);

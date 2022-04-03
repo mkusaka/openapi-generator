@@ -32,13 +32,20 @@ namespace Org.OpenAPITools.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Dog" /> class.
         /// </summary>
+        /// <param name="animal"></param>
         /// <param name="dogAllOf"></param>
         /// <param name="className">className (required)</param>
         /// <param name="color">color (default to &quot;red&quot;)</param>
-        public Dog(DogAllOf dogAllOf, string className, string color = "red") : base(className, color)
+        public Dog(Animal animal, DogAllOf dogAllOf, string className, string color = "red") : base(className, color)
         {
+            Animal = animal;
             DogAllOf = dogAllOf;
         }
+
+        /// <summary>
+        /// Gets or Sets Animal
+        /// </summary>
+        public Animal Animal { get; set; }
 
         /// <summary>
         /// Gets or Sets DogAllOf
@@ -120,6 +127,9 @@ namespace Org.OpenAPITools.Model
             if (reader.TokenType != JsonTokenType.StartObject)
                 throw new JsonException();
 
+            Utf8JsonReader animalReader = reader;
+            bool animalDeserialized = Client.ClientUtils.TryDeserialize<Animal>(ref animalReader, options, out Animal animal);
+
             Utf8JsonReader dogAllOfReader = reader;
             bool dogAllOfDeserialized = Client.ClientUtils.TryDeserialize<DogAllOf>(ref dogAllOfReader, options, out DogAllOf dogAllOf);
 
@@ -148,7 +158,7 @@ namespace Org.OpenAPITools.Model
                 }
             }
 
-            return new Dog(dogAllOf, className, color);
+            return new Dog(animal, dogAllOf, className, color);
         }
 
         /// <summary>
