@@ -18,7 +18,7 @@ import {
     InlineResponseDefault,
     InlineResponseDefaultFromJSON,
     InlineResponseDefaultToJSON,
-} from '../models';
+} from '../models/InlineResponseDefault';
 
 /**
  * 

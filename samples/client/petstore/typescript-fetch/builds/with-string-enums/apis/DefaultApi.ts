@@ -18,19 +18,27 @@ import {
     EnumPatternObject,
     EnumPatternObjectFromJSON,
     EnumPatternObjectToJSON,
+} from '../models/EnumPatternObject';
+import {
     InlineObject,
     InlineObjectFromJSON,
     InlineObjectToJSON,
+} from '../models/InlineObject';
+import {
     InlineResponse200,
     InlineResponse200FromJSON,
     InlineResponse200ToJSON,
+} from '../models/InlineResponse200';
+import {
     NumberEnum,
     NumberEnumFromJSON,
     NumberEnumToJSON,
+} from '../models/NumberEnum';
+import {
     StringEnum,
     StringEnumFromJSON,
     StringEnumToJSON,
-} from '../models';
+} from '../models/StringEnum';
 
 export interface FakeEnumRequestGetInlineRequest {
     stringEnum?: FakeEnumRequestGetInlineStringEnumEnum;

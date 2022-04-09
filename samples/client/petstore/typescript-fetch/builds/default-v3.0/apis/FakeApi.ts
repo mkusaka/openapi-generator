@@ -18,25 +18,37 @@ import {
     Client,
     ClientFromJSON,
     ClientToJSON,
+} from '../models/Client';
+import {
     FileSchemaTestClass,
     FileSchemaTestClassFromJSON,
     FileSchemaTestClassToJSON,
+} from '../models/FileSchemaTestClass';
+import {
     HealthCheckResult,
     HealthCheckResultFromJSON,
     HealthCheckResultToJSON,
+} from '../models/HealthCheckResult';
+import {
     OuterComposite,
     OuterCompositeFromJSON,
     OuterCompositeToJSON,
+} from '../models/OuterComposite';
+import {
     OuterObjectWithEnumProperty,
     OuterObjectWithEnumPropertyFromJSON,
     OuterObjectWithEnumPropertyToJSON,
+} from '../models/OuterObjectWithEnumProperty';
+import {
     Pet,
     PetFromJSON,
     PetToJSON,
+} from '../models/Pet';
+import {
     User,
     UserFromJSON,
     UserToJSON,
-} from '../models';
+} from '../models/User';
 
 export interface FakeHttpSignatureTestRequest {
     pet: Pet;

@@ -18,10 +18,12 @@ import {
     GetMatchingPartsResponse,
     GetMatchingPartsResponseFromJSON,
     GetMatchingPartsResponseToJSON,
+} from '../models/GetMatchingPartsResponse';
+import {
     GetPetPartTypeResponse,
     GetPetPartTypeResponseFromJSON,
     GetPetPartTypeResponseToJSON,
-} from '../models';
+} from '../models/GetPetPartTypeResponse';
 
 export interface GetFakePetPartTypeRequest {
     fakePetPartId: number;

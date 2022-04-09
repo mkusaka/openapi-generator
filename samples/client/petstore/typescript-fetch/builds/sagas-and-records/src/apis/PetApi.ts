@@ -18,22 +18,32 @@ import {
     Category,
     CategoryFromJSON,
     CategoryToJSON,
+} from '../models/Category';
+import {
     FindPetsByStatusResponse,
     FindPetsByStatusResponseFromJSON,
     FindPetsByStatusResponseToJSON,
+} from '../models/FindPetsByStatusResponse';
+import {
     FindPetsByUserResponse,
     FindPetsByUserResponseFromJSON,
     FindPetsByUserResponseToJSON,
+} from '../models/FindPetsByUserResponse';
+import {
     ModelApiResponse,
     ModelApiResponseFromJSON,
     ModelApiResponseToJSON,
+} from '../models/ModelApiResponse';
+import {
     Pet,
     PetFromJSON,
     PetToJSON,
+} from '../models/Pet';
+import {
     PetRegionsResponse,
     PetRegionsResponseFromJSON,
     PetRegionsResponseToJSON,
-} from '../models';
+} from '../models/PetRegionsResponse';
 
 export interface AddPetRequest {
     dummyCat: Category;
