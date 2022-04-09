@@ -4,15 +4,22 @@
 
 import * as runtime from '../runtime';
 {{#imports.0}}
+{{#withoutRuntimeChecks}}
 import {
     {{#imports}}
     {{className}},
-    {{^withoutRuntimeChecks}}
-    {{className}}FromJSON,
-    {{className}}ToJSON,
-    {{/withoutRuntimeChecks}}
     {{/imports}}
 } from '../models';
+{{/withoutRuntimeChecks}}
+{{^withoutRuntimeChecks}}
+{{#imports}}
+import {
+    {{className}},
+    {{className}}FromJSON,
+    {{className}}ToJSON,
+} from '../models/{{className}}';
+{{/imports}}
+{{/withoutRuntimeChecks}}
 {{/imports.0}}
 
 {{#operations}}
